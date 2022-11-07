@@ -39,6 +39,19 @@
                             </div>
                         </div>
 
+                        @if(session('message'))
+                        <div class="d-flex justify-content-center">
+                            <div class="alert alert-danger alert-dismissible fade show w-50" role="alert">
+                                <strong>  {{session('message')}}</strong> 
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              </div>
+
+                        </div>
+                        
+                        @endif
+
+                   
+
                         <div class="row mb-3">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">

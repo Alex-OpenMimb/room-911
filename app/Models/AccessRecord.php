@@ -6,26 +6,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Role extends Model
+class AccessRecord extends Model
 {
+
     use HasFactory, SoftDeletes;
 
-    protected $table = 'roles';
+    protected $table = 'access_records';
+
 
     protected $fillable = [
         'name',
-        'status',
-       
-    ];
-
-    const NAME = [
-        'Admin_room_911',
-        'Assistant',
-        'Auditor',
+        'employee_id',
+        'employee_document',
+        'access'
     ];
 
     //Relationship
-    public function users() {
-        return $this->hasMany(User::class);
+
+    public function employee() {
+        return $this->belongsTo(Employee::class);
     }
+
+
+
 }
