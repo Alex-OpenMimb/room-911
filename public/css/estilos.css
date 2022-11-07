@@ -1,0 +1,752 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Metropolis,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    box-sizing: border-box;
+}
+:root{
+    --color-green: #1ABC9C;
+    --color-dark-blue:rgb(44, 62, 80);
+}
+
+.header-nav{
+    font-size:1rem;
+    width: 100%;
+    height: 120px;
+    background: rgb(44, 62, 80);
+    position: fixed;
+    top: 0;
+    left: 0;
+   /*    */
+
+}
+.header-nav__container{
+    height: 100%;
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+
+
+}
+
+.header-nav__logo{
+    margin-left: 3vw ;
+}
+
+.logo__image{
+    max-width: 200px;
+    height: auto;
+}
+
+
+.menu-nav{
+    margin-left: -50px;
+}
+
+.menu-nav__list{
+    list-style: none;
+    display: flex;
+
+  }
+.menu-nav__page-link{
+    display: block;
+    padding: .1rem 1rem;
+    color: white;
+    text-decoration: none;
+
+}
+
+.menu-nav__page-link:hover{
+    color: #1ABC9C;
+
+}
+#btn-menu{
+    display: none;
+
+}
+#icon-menu{
+    display: none;
+}
+.container-login{
+    margin-right: 3vw ;
+}
+ #login__link{
+     display: block;
+     width: 130px;
+    height: 50px;
+    background: white;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+
+ }
+ #login__link:hover{
+     color: white;
+     background: #1ABC9C;
+
+ }
+ .container-login-responsive{
+    display: none;
+}
+
+
+ .profile{
+    width: 100%;
+    height: 600px;
+    background:#1ABC9C;
+    padding-top: 10rem;
+}
+.profile__img{
+    text-align: center;
+}
+
+.profile__img img{
+    width: auto;
+    height:270px;
+}
+.profile__title{
+    text-align: center;
+    color: white;
+    font-size: 4em;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+  .pofile__text{
+      font-size: 1rem;
+      color: white;
+      text-align: center;
+      margin-top: 2rem;
+
+}
+.profile__star{
+    text-align: center;
+
+
+}
+
+.profile__star-image{
+    margin-top: 1em;
+    width: auto;
+    height: 2rem;
+
+}
+.briefcase{
+    width: 100%;
+    height: 700px;
+    background:white;
+}
+.briescase__container-img{
+    text-align: center;
+
+}
+.briefcase__star-image{
+    margin-top: -1em;
+    width: auto;
+    height: 2rem;
+
+}
+.briefcase__tittle{
+    font-size: 3rem;
+    text-align: center;
+    color: rgb(44, 62, 80);
+    margin-top: 4.5rem;
+}
+.briefcase__container{
+    margin-top: 1.5em;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 350px));
+    grid-template-rows: repeat(2, 1fr);
+    justify-content: center;
+    row-gap: 50px;
+    column-gap: 40px;
+}
+
+.briefcase__image-item{
+    height: auto;
+    width: 100%;
+    border-radius: 4%;
+}
+.about{
+    width: 100%;
+    height: 700px;
+    background: #1ABC9C;
+    color: white;
+}
+.about-tittle{
+    text-align: center;
+    color: white;
+    font-size: 3em;
+    padding-top: 1em;
+
+
+}
+
+.about__star-img{
+    width: auto;
+    height: 2rem;
+}
+.about__img{
+    text-align: center;
+    margin-top: -1em;
+}
+.about__container-display{
+    display: flex;
+    justify-content: center;
+    font-size: 1.3em;
+}
+.about__text{
+    width: 330px;
+    margin: 25px;
+}
+.about__container-button{
+    display: flex;
+    justify-content: center;
+
+}
+#about__button{
+    display: block;
+    background: #1ABC9C ;
+    border-radius: 8px;
+    border: 2px solid white;
+    color: white;
+    width: 250px;
+    height: 70px;
+    font-size: 1.4em;
+    transition: all .3s;
+    text-decoration: none;
+    line-height: 70px;
+    text-align: center;
+
+
+}
+
+#about__button:hover{
+    background: white;
+    color: black;
+}
+.contact{
+    width: 100%;
+    height: 1050px;
+    background: white;
+}
+.contact__tittle{
+    font-size: 3rem;
+    text-align: center;
+    color: rgb(44, 62, 80);
+    margin-top: 4.5rem;
+}
+.contact__img{
+    text-align: center;
+}
+.contact__star-image{
+    margin-top: -1em;
+    width: auto;
+    height: 2rem;
+}
+.container-form{
+    text-align: center;
+}
+.contact__form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.input-name{
+    margin-top: 10em;
+    width: 50%;
+    height: 90px;
+    border: none;
+    border-bottom: 2px solid rgb(226, 213, 213);
+    margin: 8px;
+    font-size: 1.4em;
+    color: #495057;
+
+}
+.input-name:focus{
+   outline: none;
+}
+
+
+.input-textarea{
+    margin-top: 1em;
+    font-size: 1.8em;
+    height: 300px;
+    width: 50%;
+    border: none;
+    border-bottom: 2px solid rgb(226, 213, 213);
+    resize: none;
+}
+.input-textarea:focus{
+    outline: none;
+    color: #495057;
+}
+.input-submit{
+    margin-top: 10em;
+    color: white;
+    background-color: #1ABC9C ;
+    border-radius: 10px;
+    width: 130px;
+    height: 80px;
+    border: none;
+    border-bottom: 2px solid rgb(226, 213, 213);
+    margin-top: 30px;
+    font-size: 1.5em;
+
+}
+.submite-form{
+    margin: auto;
+    width: 50%;
+}
+
+.input-submit:hover{
+    background-color: #1c8f78
+}
+.input-submit:focus{
+    border: 4px solid #9de2d5;
+    box-sizing: content-box;
+    width: 95px;
+    height: 60px;
+}
+.social-media__section:first-child{
+    width: 100%;
+    height: 300px;
+    background: #2C3E50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.social-media__section:last-child{
+    width: 100%;
+    height: 80px;
+    background: #1A252F;
+}
+
+.social-media__box{
+    width: 330px;
+    height: 200px;
+    text-align: center;
+
+}
+.social-media__image{
+    display: flex;
+    font-size: 2.5em;
+    justify-content: center;
+
+}
+.social-media__text{
+    font-size: 1.4em;
+}
+#boostrap{
+    color: #1ABC9C;
+    text-decoration: none;
+}
+#boostrap:hover{
+    color:#1c8f78;
+    text-decoration:underline;
+}
+.social-media__section:last-child{
+   display: flex;
+   font-family: Arial, Helvetica, sans-serif;
+   justify-content: center;
+   align-items: center;
+   color: white;
+   font-size: .6em;
+}
+
+@media screen and (max-width: 990px){
+    #icon-menu{
+    display: block;
+    width: 100px;
+    height: 50px;
+    background: #1ABC9C;
+    color: white;
+    font-size: .9em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 30px;}
+
+    #icon-menu:hover{
+        background-color: #1c8f78;
+    }
+
+
+    #image-menu{
+        color: white;
+    }
+    .menu-nav{
+     display: none;
+    }
+    .container-login-responsive{
+        display: block;
+
+    }
+    #login__link-responsive{
+        display: block;
+        width: 120px;
+       height: 50px;
+       background: white;
+       border-radius: 60px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       cursor: pointer;
+       text-decoration: none;
+       color: black;
+       margin-left: -60px;
+
+    }
+    #login__link-responsive:hover{
+        color: white;
+        background: #1ABC9C;
+
+    }
+    .container-login{
+        display: none;
+    }
+
+    .briefcase{
+        height: 1000px;
+    }
+
+    .briefcase__container{
+        display: grid;
+        grid-template-columns: repeat(2, 350px);
+        justify-content: center;
+        column-gap: 70px;
+        row-gap: 30px;
+
+    }
+    .social-media__section:first-child{
+        height: 700px;
+        display: flex;
+        flex-direction: column;
+    }
+    .social-media__box{
+        margin-top: 50px;
+
+    }
+    .social-media__box:last-child{
+        width: 100%;
+
+    }
+    .social-media__text{
+        font-size: 1.2em;
+        padding: 0px  80px;
+    }
+}
+
+@media screen  and (max-width: 820px){
+    .briefcase__container{
+        display: grid;
+        grid-template-columns: 400PX;
+        justify-content: center;
+        row-gap: 30px;
+        text-align: center;
+    }
+    .briefcase{
+        height: 2100px;
+    }
+
+    .briefcase__image-item{
+        height: auto;
+       width: 100%; }
+
+    }
+
+    /* stylesheet of login */
+
+#body-login{
+        background: #1ABC9C;
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-family:  Metropolis,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+    }
+
+    .container-form-login{
+        display: flex;
+        justify-content: center;
+
+
+    }
+    .form-image{
+        display: none;
+    }
+    .form-login{
+        display: flex;
+        flex-direction: column;
+        border-radius: 6px;
+        width: 500px;
+        height: 720px;
+        background: white;
+        margin: 50px 25px;
+
+    }
+    .form__tittle{
+        display: block;
+        text-align: center;
+        color:#69707a;
+        font-weight: 400;
+        margin-top: 60px;
+        font-size: 1.7rem;
+    }
+    .form__input-email, .form__pasword{
+        width: 370px;
+        height: 55px;
+        border: 1px solid rgb(223, 216, 216);
+        border-radius:30px;
+        margin: 10px auto 10px auto;
+        padding-left: 20px;
+    }
+    .form__input-email:focus, .form__pasword:focus{
+        outline: none;
+    }
+
+
+    .container-checkbox{
+        display: flex;
+        align-items: center;
+        padding: 10px 0 0 60px;
+
+    }
+    #form__checkbox{
+    width: 15px;
+    height: 15px;
+
+
+    }
+    .form__checkbox-label{
+        font-size: .8rem;
+        color: #69707a ;
+        margin-left: 7px;
+
+    }
+    .form__submit{
+        width: 390px;
+        height: 55px;
+        border: 1px solid rgb(223, 216, 216);
+        border-radius:30px;
+        margin: 20px auto 10px auto;
+        background: #1ABC9C;
+        color: white;
+        cursor: pointer;
+
+    }
+    .container-social{
+        width: 390px;
+        height: 180px;
+        border-top: 1px solid rgb(223, 216, 216);
+        border-bottom: 1px solid rgb(223, 216, 216) ;
+        margin: 15px auto 20px auto;
+    }
+    .botton-gmail, .botton-facebook{
+        display: block;
+        width: 390px;
+        height: 55px;
+        border: 1px solid rgb(223, 216, 216);
+        border-radius:30px;
+        margin: 20px auto 10px auto;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .botton-gmail{
+        background: #EA4335;
+    }
+
+    .botton-facebook{
+        background: #3B5998;
+    }
+    .botton-gmail:hover{
+        background: #ec3221;
+    }
+    .botton-facebook:hover{
+        background: #1646ad;
+    }
+    .button-gmail__link, .button-facebook__link{
+        text-decoration: none;
+        color: white;
+        font-size: .9rem;
+
+    }
+    .password-link, .login-link{
+        color: rgb(78, 115, 223);
+        display: block;
+        text-align: center;
+        font-size: .9rem;
+        margin: 5px auto 5px auto;
+    }
+    @media screen and (min-width: 990px){
+        .container-form-login{
+            display: flex;
+        }
+        .form-image{
+            display: block;
+            width: 450px;
+            height: 720px;
+            margin: 50px 0 25px 20px ;
+            background: rgb(216, 211, 211);
+            border-top-left-radius: 6px;
+            /* background-image: url(../image/login.jpg ); */
+            background-repeat: no-repeat;
+            background-size:contain;
+            background-position-y: center ;
+            border-bottom-left-radius: 6px;
+
+        }
+        .form-login{
+            margin-left: 0;
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+            border-top-left-radius: 0px;
+            border-bottom-left-radius: 0px;
+
+        }
+    }
+.title-world{
+    color: rgba(15, 67, 238, 0.753);
+}
+
+    /* Stylesheet of recover password */
+
+
+ #body-recover-password{
+    background: var(--color-green);
+ }
+ .container-password {
+     margin: 50px auto 50px auto;
+     width: 500px;
+     height: 400px;
+     background: white;
+     border-radius: 6px;
+     text-align: center;
+     padding: 50px 0 0px 0;
+
+ }
+ .password__tittle{
+     display: block;
+     font-size: 1.8em;
+     color:rgb(168, 160, 160);
+ }
+
+ .password-form{
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+ }
+ .password-form__input-email{
+     width: 400px;
+     height: 50px;
+     border: 1px solid rgb(236, 231, 231);
+     border-radius: 25px ;
+     padding-left: 10px;
+     margin-top: 20px;
+     color: rgb(168, 160, 160);
+
+ }
+ .password-form__input-email:focus{
+     outline: none;
+ }
+ .password-form__input-password{
+    width: 420px;
+    height: 50px;
+     margin-top: 20px;
+     border: 1px solid rgb(236, 231, 231) ;
+     border-radius: 25px ;
+     background: var(--color-green);
+     color: white;
+
+ }
+ .password-form__input-password:hover{
+     background: #1dc5a4;
+
+ }
+ .password-form__input-password:focus{
+    background: #1dc5a4;
+    width: 410px;
+    height: 48px;
+}
+.password-login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.password__text{
+    color: rgb(168, 160, 160) ;
+}
+.password__link-login{
+    margin-left: 5px;
+    color: rgb(114, 114, 243);
+}
+
+/* Stylesheets of Register */
+
+#body-register{
+    background: var(--color-green);
+}
+
+.container-register{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 600px;
+    margin: 20px auto 20px auto;
+    background: white;
+    border-radius: 6px;
+    align-items: center;
+}
+
+.register__tittle{
+    margin: 50px auto 20px auto ;
+    color:rgb(168, 160, 160);
+    font-size: 1.8em ;
+}
+.register-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.input{
+    width: 400px;
+    height: 50px;
+    border: 1px solid rgb(236, 231, 231);
+    border-radius: 25px ;
+    padding-left: 10px;
+    margin: 10px auto 10px auto;
+    color: rgb(168, 160, 160);
+}
+.input:focus{
+    outline: none;
+}
+.register-form__register{
+    background: var(--color-green);
+    color: white;
+    cursor: pointer;
+    width: 410px;
+
+}
+.register-form__register:focus{
+    width: 395px;
+    height: 48px;
+
+}
+
+
+
+
+

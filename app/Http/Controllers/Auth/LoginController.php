@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -27,6 +31,27 @@ class LoginController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+
+    public function username()
+    {
+        return 'user_name';
+    }
+
+    public function login(Request $request){
+        if(Auth::attempt(['user_name' => $request->user_name, 'password' => $request->password])){
+            if(Auth::user()->status == "DISABLED"){
+                Auth::logout();
+                return redirect()->route('login')->with('message','Your user account is disabled');
+            }else{
+                $user               = User::find(Auth::user()->id);
+                $user->last_access  = Carbon::now()->format('y-m-d h:i:s A');
+                $user->save();
+                return redirect()->route('dashboard');
+            }
+        }
+        return redirect()->route('login')->with('message', 'Invalid credentials');
+    }
 
     /**
      * Create a new controller instance.
