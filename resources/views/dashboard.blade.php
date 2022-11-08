@@ -1,5 +1,5 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1>Contenido</h1>
+@livewire('employe-controller')
 @endsection
