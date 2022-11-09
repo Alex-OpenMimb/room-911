@@ -238,7 +238,7 @@
             });
 
             window.livewire.on('modalsClosed', () => {
-                $('#modalEmployee').modal('hide');
+                $('#createEmployeeModal').modal('hide');
                 $('#modalAccessEmployee').modal('hide');
                 $('#modalEmployeeCSV').modal('hide');
                 $('#modalChangedPassword').modal('hide');

@@ -1,5 +1,5 @@
  <!-- Modal -->
- <div wire:ignore.self class="modal fade" id="createEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div wire:ignore.self class="modal fade" id="createEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -26,24 +26,23 @@
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12">
                             <label >Document Number*</label>
-                            <input wire:model.lazy="document_number" type="number" class="form-control" >
+                            <input wire:model.lazy="employee_document" type="number" class="form-control" >
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12">
                             <label >Department*</label>
                             <select wire:model="department"  class="form-control">
-                                <option value="Elegir">Elegir</option>
-                                {{-- @foreach($departments as $department)
+                                <option value="Elegir">Choose</option>
+                                @foreach($departments as $department)
                                     <option value="{{ $department->id }}" >
                                         {{ $department->name}}
                                     </option>
-                                @endforeach --}}
+                                @endforeach
                             </select>
                         </div>
                     </div>
-
-                <div class="mt-2">
-                    @include('common.messages')
-                </div>
+                    <div class="mt-2">
+                      @include('common.messages')
+                  </div>
             </form>
             </div>
         </div>

@@ -26,7 +26,7 @@
 
         {{-- @endif --}}
         {{-- @if (Auth::user()->role->name == "Admin ROOM_911") --}}
-            <button type="button" title="created employee"  wire:click="" class="btn btn-dark" data-toggle="modal" data-target="#createEmployee">
+            <button type="button" title="created employee"  wire:click="handleAction(1)" class="btn btn-dark" data-toggle="modal" data-target="#createEmployeeModal">
                 New Employee
             </button>
         {{-- @endif --}}

@@ -14,48 +14,46 @@
                 @include('common.search')
                 @include('livewire.employee.filter')
                 @include('common.alerts')
-                {{-- @if ($info->count() > 0) --}}
+                @if ($employees->count() > 0)
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover table-striped table-checkable table-highlight-head mb-4">
                             <thead>
                                 <tr>
-                                    <th class="text-center">ID</th>
-                                    <th class="text-center">Department</th>
-                                    <th class="text-center">Last Name</th>
-                                    <th class="text-center">Middle Name</th>
-                                    <th class="text-center">Firts Name</th>
+                                    <th class="text-center">Item</th>
                                     <th class="text-center">Document Number</th>
-                                    <th class="text-center">Status Access</th>
+                                    <th class="text-center">Firts Name</th>
+                                    <th class="text-center">Last Name</th>
+                                    <th class="text-center">Department</th>
+                                    <th class="text-center">Status</th>
                                     <th class="text-center">Last Access</th>
                                     <th class="text-center">Total Access</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @foreach($info as $elemen) --}}
+                                @foreach($employees as $employee)
                                     <tr>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-                                        <td class="text-center"></td>
-
-                                        <td class="text-center" style="width: 30%">
+                                        <td class="text-center">{{$employee->id}}</td>
+                                        <td class="text-center">{{$employee->employee_document}}</td>
+                                        <td class="text-center">{{$employee->first_name}}</td>
+                                        <td class="text-center">{{$employee->last_name}}</td>
+                                        <td class="text-center">{{$employee->department->name}}</td>
+                                        <td class="text-center">{{$employee->status}}</td>
+                                        <td class="text-center">{{$employee->Last_access}}</td>
+                                        <td class="text-center">{{$employee->Last_access_total}}</td>
+                                                                 
+                                       <td class="text-center" style="width: 30%">
                                             @include('common.actions')
                                         </td>
                                     </tr>
-                                {{-- @endforeach --}}
+                                @endforeach
                             </tbody>
                         </table>
-                        {{-- {{$info->links()}} --}}
+                        {{-- {{$employees->links()}} --}}
                     </div>
-                {{-- @else
-                    <h5 class="text-center mb-4">No Records...</h5>
-                @endif --}}
+                @else
+                    <h5 class="text-center mb-4">No Records...Please regiter new employee</h5>
+                @endif
             </div>
 
         {{-- @elseif($action == 2)

@@ -16,7 +16,6 @@ class CreateDepartmentsTable extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('status',['ACTIVE','DISABLED'])->default('ACTIVE');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -24,13 +23,13 @@ class CreateDepartmentsTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('employee_document')->unique();
-            $table->string('first_name',100);
-            $table->string('last_name',100);
+            $table->string('first_name');
+            $table->string('last_name');
 
             $table->unsignedBigInteger('department_id');
             $table->foreign('department_id')->references('id')->on('departments');
 
-            $table->enum('status',['ACTIVE','DISABLED'])->default('ACTIVE');
+            $table->enum('status',['Active','Inactive'])->default('Active');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -56,5 +55,7 @@ class CreateDepartmentsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('departments');
+        Schema::dropIfExists('access_records');
+        Schema::dropIfExists('employees');
     }
 }

@@ -24,9 +24,11 @@ class Department extends Model
     }
 
     const NAME = [
-        'Packing department',
-        'Quality department',
-        'Production department',
         'Audit department',
+        'Packing department',
+        'Production department',
+        'Quality department',
     ];
+
+
 }
