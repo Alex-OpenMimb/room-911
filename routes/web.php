@@ -20,4 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+// Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+Route::middleware(['auth'])->group( function() {
+    Route::view('dashboard',        'dashboard')->name('dashboard');
+    Route::view('users',            'users')->name('users');
+
+    Route::get('handle/pdf',        [AccessController::class, 'handlePDF'])->name('pdf');
+
+});

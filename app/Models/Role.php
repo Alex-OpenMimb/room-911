@@ -19,7 +19,7 @@ class Role extends Model
     ];
 
     const NAME = [
-        'Admin_room_911',
+        'Admin room 911',
         'Assistant',
         'Auditor',
     ];

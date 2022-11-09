@@ -1,9 +1,9 @@
 
 const handleState = (id, status, action) => {
-    if (status == 'ACTIVE') {
-        status = 'DISABLED'
+    if (status == 'Active') {
+        status = 'Inactive'
     }else{
-        status = 'ACTIVE'
+        status = 'Active'
     }
 
     Swal.fire({
