@@ -7,18 +7,24 @@ use App\Models\Employee;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Illuminate\Support\Facades\Route;
 
 class EmployeController extends Component
 {
     use WithPagination, WithFileUploads;
 
-    public $departments, $selected_id, $first_name, $last_name, $employee_document, $department = 'Choose', $employee;
-    public $action = 1, $pagination = 5;
+    protected $paginationTheme = 'bootstrap';
 
-
+    public $departments, $selected_id, $first_name, $last_name, $employee_document, $department = 'Choose', $employee, $accessEmployee;
+    public $action = 1, $pagination = 5, $url, $edit = 1;
+    public $dateFromFilter, $dateToFilter, $dateFromFilterShow, $csvFile, $count, $departmentFilter, $status;              
+                 
+          
+    
     public function mount(){
 
         $this->departments  =  Department::get();
+        $this->url          =  Route::current()->getName();
      
     }
 
@@ -37,6 +43,10 @@ class EmployeController extends Component
     public function handleAction($action)
     {
         $this->handleReset($action);
+    }
+
+    public function updatingSearch(){
+        $this->gotoPage(1);
     }
 
     public function StoreOrUpdate($action)
@@ -92,6 +102,20 @@ class EmployeController extends Component
         $this->last_name         = '';
         $this->employee_document = '';
         $this->department        = '';
+        $this->search            = '';
+        $this->dateFromFilter       = '';
+        $this->dateToFilter         = '';
+        $this->dateFromFilterShow   = '';
+        $this->dateToFilterShow     = '';
+        $this->accessEmployee       = '';
+        $this->csvFile              = '';
+        $this->count                = 1;
+        $this->edit                 = 1;
+        $this->action               = $action;
+        $this->selected_id          = null;
+        $this->department           = 'Elegir';
+        $this->departmentFilter     = 'Elegir';
+        $this->status               = 'ACTIVO';
     }
 
 
@@ -103,7 +127,7 @@ class EmployeController extends Component
     	$this->last_name            = $employee->last_name;
     	$this->employee_document    = $employee->employee_document;
     	$this->department           = $employee->department_id;
-        $this->accessEmployee       = $employee->accessActions;
+        $this->accessEmployee       = $employee->accessRecord;
     	$this->action               = $action;
     	$this->edit                 = 2;
     }

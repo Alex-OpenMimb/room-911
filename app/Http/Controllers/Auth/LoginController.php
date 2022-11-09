@@ -47,7 +47,7 @@ class LoginController extends Controller
                 $user               = User::find(Auth::user()->id);
                 $user->last_access  = Carbon::now()->format('y-m-d h:i:s A');
                 $user->save();
-                return redirect()->route('dashboard');
+                return redirect()->route('accessroom');
             }
         }
         return redirect()->route('login')->with('message', 'Invalid credentials');

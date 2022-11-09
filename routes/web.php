@@ -23,7 +23,7 @@ Auth::routes();
 // Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
 Route::middleware(['auth'])->group( function() {
-    Route::view('dashboard',        'dashboard')->name('dashboard');
+    Route::view('access-room',        'accessroom')->name('accessroom');
     Route::view('users',            'users')->name('users');
 
     Route::get('handle/pdf',        [AccessController::class, 'handlePDF'])->name('pdf');

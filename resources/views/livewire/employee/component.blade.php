@@ -1,6 +1,6 @@
 <div class="row layout-top-spacing">
     <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
-        {{-- @if($action == 1) --}}
+        @if($action == 1)
             <div class="widget-content-area br-4">
                 <div class="widget-header">
                     <div class="row">
@@ -49,16 +49,16 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{-- {{$employees->links()}} --}}
+                        {{$employees->links()}}
                     </div>
                 @else
                     <h5 class="text-center mb-4">No Records...Please regiter new employee</h5>
                 @endif
             </div>
 
-        {{-- @elseif($action == 2)
-            @include('livewire.employees.show')
-        @endif --}}
+        @elseif($action == 2)
+            @include('livewire.employee.show')
+        @endif
     </div>
     @include('livewire.employee.modals')
 </div>
