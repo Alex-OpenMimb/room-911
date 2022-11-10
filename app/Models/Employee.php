@@ -41,6 +41,9 @@ class Employee extends Model
         return $query->where('id', '>', 0);
     }
 
+    public function scopeDocumenNumber($query, $document){
+        return $query->where('employee_document', $document);
+    }
 
     //Accesors
 

@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="col-xl-12 text-center">
 
-                            <h5><b>Access ROOM_911</b></h5>
+                            <h5><b>ROOM 911</b></h5>
 
                         </div>
                     </div>

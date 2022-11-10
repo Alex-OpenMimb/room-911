@@ -37,6 +37,7 @@
         <link href="{{ asset('plugins/flatpickr/flatpickr.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('plugins/flatpickr/material_red.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('assets/css/elements/color_library.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/utility.css') }}" rel="stylesheet" type="text/css" />
 
 
 
@@ -65,43 +66,22 @@
 
         <!-- BEGIN NAVBAR -->
         <div class="header-container">
-            <header class="header navbar navbar-expand-sm">
-                <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-menu">
-                        <line x1="3" y1="12" x2="21" y2="12"></line>
-                        <line x1="3" y1="6" x2="21" y2="6"></line>
-                        <line x1="3" y1="18" x2="21" y2="18"></line>
-                    </svg>
-                </a>
+            <header class="header navbar navbar-expand-sm d-flex justify-content-between mx-0 bg-blue " style="height: 4rem">
+               
 
-                <div class="nav-logo align-self-center">
+                <div class="nav-logo align-self-center d-flex mt-3">
                     <a class="navbar-brand" href="">
-                        <span class="navbar-brand-name">ACCESS ROOM_911</span>
+                        <span class="navbar-brand-name color-text-primary">ACCESS CONTROL </span>
                     </a>
-                    <div class="media-body align-self-center">
-                        <h6> <b>Last access</b></h6>
-                    </div>
+
+                    <nav class="d-flex mt-2">
+                        <ul><a class="btn-menu" href="{{ route('users') }}">Users</a></ul>
+                        <ul><a class="btn-menu" href="{{ route('accessroom') }}">Access Room</a></ul>
+                    </nav>
                 </div>
 
-                <ul class="navbar-item flex-row mr-auto">
-                    <li class="nav-item align-self-center search-animated">
-                        <form class="form-inline search-full form-inline search" role="search">
-                            <div class="search-bar">
-                                <input type="text" class="form-control search-form-control  ml-lg-auto"
-                                    placeholder="Buscar...">
-                            </div>
-                        </form>
+              
 
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-search toggle-search">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                        </svg>
-                    </li>
-                </ul>
 
                 <ul class="navbar-item flex-row nav-dropdowns">
 
@@ -110,9 +90,9 @@
                         <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="user-profile-dropdown"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="media">
-                                <img src="images/user.png" class="img-fluid" alt="admin-profile">
+                                <img src="images/avatar_teem.png" class="img-fluid" alt="">
                                 <div class="media-body align-self-center">
-                                    <h6> <b>Welcome</b></h6>
+                                    <h6> <b>Hello!</b> {{ Auth::user()->name }}</h6>
                                 </div>
                             </div>
 
@@ -126,7 +106,7 @@
                         <div class="dropdown-menu position-absolute animated fadeInUp"
                             aria-labelledby="user-profile-dropdown">
                             <div class="">
-                                <div class="dropdown-item">
+                                {{-- <div class="dropdown-item">
                                     <a class="" href="{{ route('users') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -134,8 +114,8 @@
                                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                             <circle cx="12" cy="7" r="4"></circle>
                                         </svg>Users</a>
-                                </div>
-                                <div class="dropdown-item">
+                                </div> --}}
+                                {{-- <div class="dropdown-item">
                                     <a class="" href="{{ route('accessroom') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24"
                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -143,7 +123,7 @@
                                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                             <circle cx="12" cy="7" r="4"></circle>
                                         </svg>Access Room</a>
-                                </div>
+                                </div> --}}
                                 <div class="dropdown-item">
                                     <form id="form1" class="form-horizontal" method="POST" action="{{ route('logout') }}">
                                         {{ csrf_field() }}
@@ -239,7 +219,7 @@
 
             window.livewire.on('modalsClosed', () => {
                 $('#createEmployeeModal').modal('hide');
-                $('#modalAccessEmployee').modal('hide');
+                $('#AccessEmployee').modal('hide');
                 $('#modalEmployeeCSV').modal('hide');
                 $('#modalChangedPassword').modal('hide');
             });

@@ -1,0 +1,24 @@
+/* Utility */
+.bg-blue{
+    background-color: rgb(207, 215, 251);
+}
+
+.color-text-primary{
+    color: #3F4968;
+}
+
+
+/* Btn menu */
+
+.btn-menu{
+    border: #3F4968 1px solid;
+    border-radius: 15px;
+    padding: .3rem .5rem;
+    background-color: white;
+    columns: #3F4968;
+}
+
+.btn-menu:hover{
+    background-color: rgb(58, 207, 162); 
+}
+

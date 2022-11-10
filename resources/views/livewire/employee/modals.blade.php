@@ -58,7 +58,7 @@
 {{-- access employees --}}
 
  <!-- Modal -->
- <div wire:ignore.self class="modal fade" id="modalAccessEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div wire:ignore.self class="modal fade" id="AccessEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -76,7 +76,7 @@
                     <div class="row">
                         <div class="form-group col-lg-10 col-md-10 col-sm-12">
                             <label >Document Number*</label>
-                            <input wire:model.lazy="document_number" type="number" class="form-control" >
+                            <input wire:model.lazy="employee_document" type="number" class="form-control" >
                         </div>
                     </div>
                 <div class="mt-2">

@@ -10,13 +10,13 @@
 
     <div class="col-md-6 col-lg-6 col-sm-12 mt-2 mb-2 text-right mr-2">
         {{-- @if ($url == "home") --}}
-            <button type="button" title="access employees" wire:click="handleAction(1)" class="btn btn-dark" data-toggle="modal" data-target="#modalAccessEmployee">
+            <button type="button" title="access employees" wire:click="handleAction(1)" class="btn btn-dark" data-toggle="modal" data-target="#AccessEmployee">
                 <i class="la la-arrow-circle-right la-lg"></i>
                 Access
             </button>
             <button type="button" title="created CSV" class="btn btn-dark">
                 <i class="la la-file la-lg"></i>
-                <a href="" target="blank" class="text-white">
+                <a href="{{route('exportpdf')}}" target="blank" class="text-white">
                     History PDF
                 </a>
             </button>

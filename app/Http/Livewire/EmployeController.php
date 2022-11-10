@@ -2,12 +2,15 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\AccessRecord;
 use App\Models\Department;
 use App\Models\Employee;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use Illuminate\Support\Facades\Route;
+use PDF ;
+use Carbon\Carbon;
 
 class EmployeController extends Component
 {
@@ -96,6 +99,40 @@ class EmployeController extends Component
     }
 
 
+
+    public function accessEmployee($action){
+        if ($this->employee_document) {
+            $employee = Employee::documenNumber($this->employee_document)->first();
+            if ($employee) {
+                if ($employee->status == 'Active') {
+                    $data = [
+                        'employee_id'   => $employee->id,
+                        'access'       => 'YES',
+                    ];
+                    $this->emit('msgok','Access Successful');
+                }else{
+                    $data = [
+                        'employee_id'   => $employee->id,
+                    ];
+                    $this->emit('msg-error','Employee are Inactive');
+                }
+
+            }else{
+                $data = [
+                    'employee_document'   => $this->employee_document,
+                ];
+                $this->emit('msg-error','Employee does not exist');
+            }
+            AccessRecord::create($data);
+            $this->emit('modalsClosed');
+            $this->handleReset($action);
+        }else{
+            $this->emit('msg-error','document number required');
+        }
+
+    }
+
+
     public function handleReset($action)
     {
         $this->first_name        = '';
@@ -130,5 +167,14 @@ class EmployeController extends Component
         $this->accessEmployee       = $employee->accessRecord;
     	$this->action               = $action;
     	$this->edit                 = 2;
+    }
+
+
+    public function exportPDF()
+    {
+        $access = AccessRecord::all();
+        $date   = Carbon::now()->format('y-m-d - h:i:s');
+        $pdf    = PDF::loadView('historyPDF',compact('access', 'date'));
+        return $pdf->stream("access-history-{$date}.pdf");
     }
 }
