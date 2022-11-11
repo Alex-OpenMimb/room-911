@@ -40,10 +40,14 @@ class LoginController extends Controller
 
     public function login(Request $request){
         if(Auth::attempt(['user_name' => $request->user_name, 'password' => $request->password])){
-            if(Auth::user()->status == "DISABLED"){
+            if(Auth::user()->status == "Inactive"){
                 Auth::logout();
                 return redirect()->route('login')->with('message','Your user account is disabled');
-            }else{
+            }if(Auth::user()->role->name != "Admin room 911"){
+                Auth::logout();
+                return redirect()->route('login')->with('message','Your user account it´s not administrato role');
+            }
+            else{
                 $user               = User::find(Auth::user()->id);
                 $user->last_access  = Carbon::now()->format('y-m-d h:i:s A');
                 $user->save();
