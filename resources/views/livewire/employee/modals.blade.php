@@ -96,7 +96,7 @@
 {{-- create employees CVS --}}
 
  <!-- Modal -->
- <div wire:ignore.self class="modal fade" id="modalEmployeeCSV" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div wire:ignore.self class="modal fade" id="EmployeeCSV" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -114,7 +114,7 @@
                     <div class="row">
                         <div class="form-group col-lg-10 col-md-10 col-sm-12">
                             <label >Attach csv file*</label>
-                            <input wire:model.lazy="csvFile" type="file" class="form-control" >
+                            <input wire:model.lazy="importFile" type="file" class="form-control" >
                         </div>
                     </div>
                 <div class="mt-2">

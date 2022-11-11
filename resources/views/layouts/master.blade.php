@@ -220,7 +220,7 @@
             window.livewire.on('modalsClosed', () => {
                 $('#createEmployeeModal').modal('hide');
                 $('#AccessEmployee').modal('hide');
-                $('#modalEmployeeCSV').modal('hide');
+                $('#EmployeeCSV').modal('hide');
                 $('#modalChangedPassword').modal('hide');
             });
 

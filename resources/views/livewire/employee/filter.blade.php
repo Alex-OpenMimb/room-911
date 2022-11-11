@@ -2,12 +2,12 @@
 	<div class="col-lg-2 col-md-2 col-sm-8">
         <label >Department</label>
         <select wire:model="departmentFilter"  class="form-control">
-            <option value="Elegir">Elegir</option>
-            {{-- @foreach($departments as $department)
+            <option value="Choose">Choose</option>
+            @foreach($departments as $department)
                 <option value="{{ $department->id }}" >
                     {{ $department->name}}
                 </option>
-            @endforeach --}}
+            @endforeach
         </select>
     </div>
     <div class="col-lg-3 col-md-2 col-sm-8">

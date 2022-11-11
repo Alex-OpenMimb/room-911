@@ -16,9 +16,9 @@ class Employee extends Model
     protected $table = 'employees';
 
     protected $fillable = [
-        'employee_document',
         'first_name',
         'last_name',
+        'employee_document',
         'department_id',
         'status'
     ];
@@ -41,8 +41,36 @@ class Employee extends Model
         return $query->where('id', '>', 0);
     }
 
-    public function scopeDocumenNumber($query, $document){
+    public function scopeEmployeeDocument($query, $document){
         return $query->where('employee_document', $document);
+    }
+
+    public function scopeSearch($query, $search)
+    {
+        return $query->where('id','like', '%'.$search.'%')
+                        ->orWhere('first_name','like', '%'.$search.'%')
+                        ->orWhere('last_name','like', '%'.$search.'%')
+                        ->orWhere('employee_document','like', '%'.$search.'%')
+                        ->orWhere('status','like', '%'.$search.'%');
+    }
+
+    public function scopeDepartment($query, $id){
+        return $query->where('department_id', $id);
+    }
+
+    public function scopeDateAccess($query, $dateFrom, $dateTo){
+        return $query->whereHas('accessRecord', function($q) use ($dateFrom, $dateTo){
+            $q->whereDate('created_at', '>=', $dateFrom);
+            $q->whereDate('created_at', '<=', $dateTo);
+            $q->where('access', 'YES');
+        });
+    }
+
+    public function scopeUniqueDateAccess($query, $date){
+        return $query->whereHas('accessRecord', function($q) use ($date){
+            $q->whereDate('created_at', $date);
+            $q->where('access', 'YES');
+        });
     }
 
     //Accesors

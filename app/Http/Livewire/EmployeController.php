@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Imports\Import;
 use App\Models\AccessRecord;
 use App\Models\Department;
 use App\Models\Employee;
@@ -11,6 +12,7 @@ use Livewire\WithPagination;
 use Illuminate\Support\Facades\Route;
 use PDF ;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 
 class EmployeController extends Component
 {
@@ -20,7 +22,7 @@ class EmployeController extends Component
 
     public $departments, $selected_id, $first_name, $last_name, $employee_document, $department = 'Choose', $employee, $accessEmployee;
     public $action = 1, $pagination = 5, $url, $edit = 1;
-    public $dateFromFilter, $dateToFilter, $dateFromFilterShow, $csvFile, $count, $departmentFilter, $status;              
+    public $dateFromFilter, $dateToFilter, $dateFromFilterShow, $importFile, $count, $departmentFilter, $status, $search;              
                  
           
     
@@ -38,7 +40,7 @@ class EmployeController extends Component
         // dd($employees);
         return view('livewire.employee.component',[
 
-            'employees' =>  $employees->orderBy('id','asc')->paginate($this->pagination),
+            'employees' =>   $employees->orderBy('id','asc')->paginate($this->pagination),
         ]);
     }
 
@@ -57,7 +59,7 @@ class EmployeController extends Component
         $this->validate([
             'first_name'                => 'bail|required|min:3|max:10|string',
             'last_name'                 => 'bail|required|string|min:3|max:20',
-            'employee_document'         => 'bail|required|numeric|digits_between:7,15|unique:employees,employee_document,'.$this->selected_id,
+            'employee_document'         => 'bail|required|numeric|digits_between:7,12|unique:employees,document_number,'.$this->selected_id,
             'department'                => 'bail|required|not_in:Choose',
         ]
       );
@@ -102,7 +104,7 @@ class EmployeController extends Component
 
     public function accessEmployee($action){
         if ($this->employee_document) {
-            $employee = Employee::documenNumber($this->employee_document)->first();
+            $employee = Employee::employeeDocument($this->employee_document)->first();
             if ($employee) {
                 if ($employee->status == 'Active') {
                     $data = [
@@ -145,14 +147,14 @@ class EmployeController extends Component
         $this->dateFromFilterShow   = '';
         $this->dateToFilterShow     = '';
         $this->accessEmployee       = '';
-        $this->csvFile              = '';
+        $this->importFile           = '';
         $this->count                = 1;
         $this->edit                 = 1;
         $this->action               = $action;
         $this->selected_id          = null;
-        $this->department           = 'Elegir';
-        $this->departmentFilter     = 'Elegir';
-        $this->status               = 'ACTIVO';
+        $this->department           = 'Choose';
+        $this->departmentFilter     = 'Choose';
+        $this->status               = 'Active';
     }
 
 
@@ -176,5 +178,45 @@ class EmployeController extends Component
         $date   = Carbon::now()->format('y-m-d - h:i:s');
         $pdf    = PDF::loadView('historyPDF',compact('access', 'date'));
         return $pdf->stream("access-history-{$date}.pdf");
+    }
+
+
+    public function createEmployeeCSV($action){
+        if ($this->importFile) {
+            if ($this->importFile->extension() == 'xlsx' || $this->importFile->extension() == 'csv') {
+               (new Import)->import($this->importFile);
+        
+                $this->emit('msgok','Successfull File csv');
+                $this->emit('modalsClosed');
+                $this->handleReset($action);
+            }else{
+                $this->emit('msg-error','Unsupported file');
+            }
+        }else{
+            $this->emit('msg-error','File csv not exist');
+        }
+    }
+
+
+    public function handleFilter($employee){
+        if ($this->search) {
+            $employee->search($this->search);
+        }
+        if ($this->departmentFilter != 'Choose') {
+            $employee->department($this->departmentFilter);
+        }
+
+        if ($this->dateFromFilter && $this->dateToFilter ) {
+            $employee->dateAccess($this->dateFromFilter, $this->dateToFilter);
+        }else{
+            if ($this->dateFromFilter) {
+                $employee->uniqueDateAccess($this->dateFromFilter);
+            }
+            if ($this->dateToFilter) {
+                $employee->uniqueDateAccess($this->dateToFilter);
+            }
+        }
+
+        return $employee;
     }
 }

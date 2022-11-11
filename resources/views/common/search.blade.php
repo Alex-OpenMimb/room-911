@@ -9,7 +9,7 @@
     </div>
 
     <div class="col-md-6 col-lg-6 col-sm-12 mt-2 mb-2 text-right mr-2">
-        {{-- @if ($url == "home") --}}
+        @if ($url == "accessroom")
             <button type="button" title="access employees" wire:click="handleAction(1)" class="btn btn-dark" data-toggle="modal" data-target="#AccessEmployee">
                 <i class="la la-arrow-circle-right la-lg"></i>
                 Access
@@ -20,16 +20,16 @@
                     History PDF
                 </a>
             </button>
-            <button type="button" title="created CSV" wire:click="handleAction(1)"  class="btn btn-dark" data-toggle="modal" data-target="#modalEmployeeCSV">
+            <button type="button" title="created CSV" wire:click="handleAction(1)"  class="btn btn-dark" data-toggle="modal" data-target="#EmployeeCSV">
                 <i class="la la-file la-lg"></i>CSV
             </button>
 
-        {{-- @endif --}}
-        {{-- @if (Auth::user()->role->name == "Admin ROOM_911") --}}
+        @endif
+        @if (Auth::user()->role->name == "Admin room 911")
             <button type="button" title="created employee"  wire:click="handleAction(1)" class="btn btn-dark" data-toggle="modal" data-target="#createEmployeeModal">
-                New Employee
+                Insert {{$url === "accessroom" ? 'employee':'user'}}
             </button>
-        {{-- @endif --}}
+        @endif
 
     </div>
 
