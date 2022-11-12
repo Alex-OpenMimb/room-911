@@ -42,7 +42,7 @@ class LoginController extends Controller
         if(Auth::attempt(['user_name' => $request->user_name, 'password' => $request->password])){
             if(Auth::user()->status == "Inactive"){
                 Auth::logout();
-                return redirect()->route('login')->with('message','Your user account is disabled');
+                return redirect()->route('login')->with('message','Your user account is disabled, contact the admin to active your account');
             }if(Auth::user()->role->name != "Admin room 911"){
                 Auth::logout();
                 return redirect()->route('login')->with('message','Your user account it´s not administrato role');

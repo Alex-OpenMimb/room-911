@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div wire:ignore.self class="modal fade" id="modalEmployee" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div wire:ignore.self class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -27,32 +27,33 @@
                             <label >User Name*</label>
                             <input wire:model.lazy="user_name" type="text" class="form-control" >
                         </div>
-                        {{-- @if ($edit == 1) --}}
+                        @if ($edit == 1)
                             <div class="form-group col-lg-4 col-md-4 col-sm-12">
                                 <label >Password</label>
                                 <input wire:model.lazy="password" type="password" class="form-control" >
                             </div>
-                        {{-- @endif --}}
-                        @if (Auth::user()->role->name == "Admin room 911")
+                        @endif
+                     
                             <div class="form-group col-lg-4 col-md-4 col-sm-12">
                                 <label >Role*</label>
                                 <select wire:model="role"  class="form-control">
-                                    <option value="Elegir">Elegir</option>
-                                    {{-- @foreach($roles as $role)
+                                    <option value="Choose">CHoose</option>
+                                    @foreach($roles as $role)
                                         <option value="{{ $role->id }}" >
                                             {{ $role->name}}
                                         </option>
-                                    @endforeach --}}
+                                    @endforeach 
                                 </select>
                             </div>
                             <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                                <label >Estado*</label>
+                                <label >Estatus*</label>
                                 <select wire:model="status" class="form-control">
-                                    <option value="ACTIVE">ACTIVE</option>
-                                    <option value="DISABLED">DISABLED</option>
+                                    <option value="Choose">CHoose</option>
+                                    <option value="Active">ACTIVE</option>
+                                    <option value="Inactive">INACTIVE</option>
                                 </select>
                             </div>
-                        @endif
+                      
                     </div>
                 <div class="mt-2">
                     @include('common.messages')
@@ -62,7 +63,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-dark" data-dismiss="modal">Exit</button>
-          <button type="button" wire:click="StoreOrUpdate(1)" class="btn btn-primary" > </button>
+          <button type="button" wire:click="StoreOrUpdate(1)" class="btn btn-primary" > Save</button>
         </div>
       </div>
     </div>

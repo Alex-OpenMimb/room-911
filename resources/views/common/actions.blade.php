@@ -5,12 +5,7 @@
         </button>
     </li>
 
-   
-        <li>
-            <button type="button" title="Enable/Disabled Acccess" class="btn btn-dark" onclick="handleState({{$employee->id}}, '{{$employee->status}}', 1)">
-                <i class="la la-exchange la-lg"></i>
-            </button>
-        </li>
+       
         <li>
             <button type="button" title="delete" class="btn btn-dark" onclick="deleteEmployee({{$employee->id}}, 1)">
                 <i class="la la-trash la-lg"></i>

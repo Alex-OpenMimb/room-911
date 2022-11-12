@@ -39,6 +39,14 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-12">
+                          <label >Estatus*</label>
+                          <select wire:model="status" class="form-control">
+                              <option value="Choose">CHoose</option>
+                              <option value="Active">ACTIVE</option>
+                              <option value="Inactive">INACTIVE</option>
+                          </select>
+                      </div>
                     </div>
                     <div class="mt-2">
                       @include('common.messages')

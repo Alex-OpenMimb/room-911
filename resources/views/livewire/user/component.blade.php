@@ -1,7 +1,6 @@
 <div class="row layout-top-spacing">
     <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
        
-        {{-- @if($action == 1) --}}
             <div class="widget-content-area br-4">
 
     
@@ -15,12 +14,10 @@
                         </div>
                     </div>
 
-                    <button type="button" title="created employee"  wire:click="handleAction(1)" class="btn btn-dark" data-toggle="modal" data-target="#createEmployeeModal">
+                    <button type="button" title="created employee"  wire:click="handleAction(1)" class="btn btn-dark" data-toggle="modal" data-target="#createUserModal">
                         Insert User
                     </button>
-                </div>
-              
-              
+                </div>            
 
                 @include('common.alerts')
                 @if ($users->count() > 0)
@@ -49,17 +46,11 @@
                                         <td class="text-center" style="width: 30%">
                                             <ul class="table-controls ">
                                                 <li>
-                                                    <button type="button" title="update" class="btn btn-dark"  wire:click="" data-toggle="modal" data-target="#createEmployeeModal">
+                                                    <button type="button" title="update" class="btn btn-dark"  wire:click="edit({{$user->id}}, 2)" data-toggle="modal" data-target="#createUserModal">
                                                         <i class="la la-edit la-lg"></i>
                                                     </button>
                                                 </li>
-                                            
-                                              
-                                                    <li>
-                                                        <button type="button" title="Enable/Disabled Acccess" class="btn btn-dark" onclick="">
-                                                            <i class="la la-exchange la-lg"></i>
-                                                        </button>
-                                                    </li>
+                            
 
                                                     <li>
                                                         <button type="button" title="delete" class="btn btn-dark" onclick="">
@@ -87,10 +78,6 @@
                 @endif
 
             </div>
-
-        {{-- @elseif($action == 2)
-            @include('livewire.employees.show')
-        @endif --}}
        
     </div>
 

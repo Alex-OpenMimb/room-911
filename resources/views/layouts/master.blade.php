@@ -222,6 +222,7 @@
                 $('#AccessEmployee').modal('hide');
                 $('#EmployeeCSV').modal('hide');
                 $('#modalChangedPassword').modal('hide');
+                $('#createUserModal').modal('hide');
             });
 
         </script>

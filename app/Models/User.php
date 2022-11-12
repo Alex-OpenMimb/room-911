@@ -61,4 +61,11 @@ class User extends Authenticatable
     {
         return $query->where('id', '>', 0);
     }
+
+
+    //Accesors
+
+    public function getNameAttribute($value) {
+        return ucfirst($value);
+    }
 }

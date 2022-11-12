@@ -23,7 +23,7 @@ class EmployeController extends Component
     public $departments, $selected_id, $first_name, $last_name, $employee_document,  $employee, $accessEmployee;
     public $action = 1, $pagination = 5, $url, $edit = 1;
     public $dateFromFilter, $dateToFilter, $dateFromFilterEmployee, $dateToFilterEmployee, $importFile, $count, $search;  
-    public $idFilter = 'Choose',$department = 'Choose', $departmentFilter = 'Choose', $status = 'Active';    
+    public $idFilter = 'Choose',$department = 'Choose', $departmentFilter = 'Choose', $status;    
           
     
     public function mount(){
@@ -61,6 +61,7 @@ class EmployeController extends Component
             'last_name'                 => 'bail|required|string|min:3|max:20',
             'employee_document'         => 'bail|required|numeric|digits_between:7,12|unique:employees,employee_document,'.$this->selected_id,
             'department'                => 'bail|required|not_in:Choose',
+            'status'                    => 'bail|required|not_in:Choose',
         ]
       );
 
@@ -73,6 +74,7 @@ class EmployeController extends Component
         'last_name'             => $this->last_name,
         'employee_document'     => $this->employee_document,
         'department_id'         => $this->department,
+        'status'                => $this->status,
     ];
 
 
@@ -164,6 +166,7 @@ class EmployeController extends Component
     	$this->selected_id          = $employee->id;
     	$this->first_name           = $employee->first_name;
     	$this->last_name            = $employee->last_name;
+        $this->status               = $employee->status;
     	$this->employee_document    = $employee->employee_document;
     	$this->department           = $employee->department_id;
         $this->accessEmployee       = $employee->accessRecord;
@@ -222,6 +225,7 @@ class EmployeController extends Component
 
 
     public function AccessDateEmployee($action){
+
         $access = AccessRecord::getAccesEmployye($this->selected_id);
 
         if ($this->dateFromFilterEmployee && $this->dateToFilterEmployee ) {
