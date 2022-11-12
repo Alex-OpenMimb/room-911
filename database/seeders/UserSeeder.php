@@ -28,9 +28,9 @@ class UserSeeder extends Seeder
             'id'                => 2,
             'name'              => 'Carl',
             'email'             => 'user@email.com',
-            'role_id'           =>  Role::all()->first()['id'],
-            'user_name'         => 'User',
-            'password'          => Hash::make('CarlRoom911'),
+            'role_id'           =>  2,
+            'user_name'         => 'Attendee',
+            'password'          => Hash::make('atten123456'),
         ]);
     }
 }

@@ -47,10 +47,10 @@ class Employee extends Model
 
     public function scopeSearch($query, $search)
     {
-        return $query->where('id','like', '%'.$search.'%')
-                        ->orWhere('first_name','like', '%'.$search.'%')
+        return $query->where('first_name','like', '%'.$search.'%')
+                        ->orWhere('id','=', $search)
                         ->orWhere('last_name','like', '%'.$search.'%')
-                        ->orWhere('employee_document','like', '%'.$search.'%')
+                        ->orWhere('employee_document','like', $search.'%')
                         ->orWhere('status','like', '%'.$search.'%');
     }
 

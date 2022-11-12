@@ -5,7 +5,7 @@
         </button>
     </li>
 
-    @if (Auth::user()->role->name == "Admin room 911")
+   
         <li>
             <button type="button" title="Enable/Disabled Acccess" class="btn btn-dark" onclick="handleState({{$employee->id}}, '{{$employee->status}}', 1)">
                 <i class="la la-exchange la-lg"></i>
@@ -16,19 +16,12 @@
                 <i class="la la-trash la-lg"></i>
             </button>
         </li>
-    @endif
-    @if ($url == "accessroom")
+ 
+  
         <li>
             <button type="button" title="history" class="btn btn-dark" wire:click="edit({{$employee->id}}, 2)">
                 <i class="la la-history la-lg"></i>
             </button>
         </li>
-    @endif
-    @if ($url == "users")
-        <li>
-            <button type="button" title="changed passwor" class="btn btn-dark" wire:click="" data-toggle="modal" data-target="#modalChangedPassword">
-                <i class="la la-history la-lg"></i>
-            </button>
-        </li>
-    @endif
+ 
 </ul>

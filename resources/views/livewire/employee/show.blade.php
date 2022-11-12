@@ -15,7 +15,7 @@
 
             <div class="form-group col-lg-4 col-md-4 col-sm-12">
                 <label >Document Number</label>
-                <h6 class=""><b>{{$employee->document_number}}</b></h6>
+                <h6 class=""><b>{{$employee->employee_document}}</b></h6>
             </div>
             <div class="form-group col-lg-4 col-md-4 col-sm-12">
                 <label >Department</label>
@@ -34,32 +34,23 @@
                 <h6 class=""><b>{{$employee->last_access_total}}</b></h6>
             </div>
 
-            <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                <label >Created at</label>
-                <h6 class=""><b>{{$employee->full_created_at}}</b></h6>
-            </div>
-
-            <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                <label >Update at</label>
-                <h6 class=""><b>{{$employee->full_updated_at}}</b></h6>
-            </div>
         </div>
     </div>
     <div class="widget-header">
         <div class="row">
             <div class="col-xl-12 text-center">
-                <h5><b>History access ROOM_911</b></h5>
+                <h5><b>Access Room 911</b></h5>
             </div>
         </div>
     </div>
     <div class="row justify-content-start mb-4 mt-3">
         <div class="col-lg-3 col-md-2 col-sm-8">
             <label >Initial access date</label>
-            <input wire:model="dateFromFilterShow" wire:change="handleAccessDate(2)"  type="date" class="form-control">
+            <input wire:model="dateFromFilterEmployee" wire:change="AccessDateEmployee(2)"  type="date" class="form-control">
         </div>
         <div class="col-lg-3 col-md-2 col-sm-8">
             <label >Final access date</label>
-            <input wire:model="dateToFilterShow" wire:change="handleAccessDate(2)" type="date" class="form-control">
+            <input wire:model="dateToFilterEmployee" wire:change="AccessDateEmployee(2)" type="date" class="form-control">
         </div>
     </div>
     @if ($accessEmployee->count())
@@ -68,11 +59,11 @@
                 <div class="row">
                     <div class="form-group col-lg-4 col-md-4 col-sm-12">
                         <label >Access</label>
-                        <h6 class=""><b>{{$access->full_created_at}}</b></h6>
+                        <h6 class=""><b>{{$access->access_attempt}}</b></h6>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-12">
                         <label >Success</label>
-                        <h6 class=""><b>{{$access->success}}</b></h6>
+                        <h6 class=""><b>{{$access->access}}</b></h6>
                     </div>
                 </div>
             </div>
@@ -81,7 +72,7 @@
         <div class="widget-header">
             <div class="row">
                 <div class="col-xl-12 text-center">
-                    <h6><b>No records...</b></h6>
+                    <h6><b>No register...</b></h6>
                 </div>
             </div>
         </div>

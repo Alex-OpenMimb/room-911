@@ -20,10 +20,10 @@ class EmployeController extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $departments, $selected_id, $first_name, $last_name, $employee_document, $department = 'Choose', $employee, $accessEmployee;
+    public $departments, $selected_id, $first_name, $last_name, $employee_document,  $employee, $accessEmployee;
     public $action = 1, $pagination = 5, $url, $edit = 1;
-    public $dateFromFilter, $dateToFilter, $dateFromFilterShow, $importFile, $count, $departmentFilter, $status, $search;              
-                 
+    public $dateFromFilter, $dateToFilter, $dateFromFilterEmployee, $dateToFilterEmployee, $importFile, $count, $search;  
+    public $idFilter = 'Choose',$department = 'Choose', $departmentFilter = 'Choose', $status = 'Active';    
           
     
     public function mount(){
@@ -36,11 +36,11 @@ class EmployeController extends Component
     public function render()
     {
         $employees = Employee::HandleEmployee();
-    
-        // dd($employees);
+        // $b = $this->handleFilter($employees)->orderBy('id','asc')->paginate($this->pagination);
+        // dd($b);
         return view('livewire.employee.component',[
 
-            'employees' =>   $employees->orderBy('id','asc')->paginate($this->pagination),
+            'employees' =>   $this->handleFilter($employees)->orderBy('id','asc')->paginate($this->pagination),
         ]);
     }
 
@@ -59,7 +59,7 @@ class EmployeController extends Component
         $this->validate([
             'first_name'                => 'bail|required|min:3|max:10|string',
             'last_name'                 => 'bail|required|string|min:3|max:20',
-            'employee_document'         => 'bail|required|numeric|digits_between:7,12|unique:employees,document_number,'.$this->selected_id,
+            'employee_document'         => 'bail|required|numeric|digits_between:7,12|unique:employees,employee_document,'.$this->selected_id,
             'department'                => 'bail|required|not_in:Choose',
         ]
       );
@@ -219,4 +219,23 @@ class EmployeController extends Component
 
         return $employee;
     }
+
+
+    public function AccessDateEmployee($action){
+        $access = AccessRecord::getAccesEmployye($this->selected_id);
+
+        if ($this->dateFromFilterEmployee && $this->dateToFilterEmployee ) {
+            $access->dateAccess($this->dateFromFilterEmployee, $this->dateToFilterEmployee);
+        }else{
+            if ($this->dateFromFilterEmployee) {
+                $access->uniqueDateAccess($this->dateFromFilterEmployee);
+            }
+            if ($this->dateToFilterEmployee) {
+                $access->uniqueDateAccess($this->dateToFilterEmployee);
+            }
+        }
+        $this->accessEmployee   = $access->get();
+        $this->action           = $action;
+    }
+
 }

@@ -19,7 +19,7 @@
                         <table class="table table-bordered table-hover table-striped table-checkable table-highlight-head mb-4">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Item</th>
+                                    <th class="text-center">Id</th>
                                     <th class="text-center">Document Number</th>
                                     <th class="text-center">Firts Name</th>
                                     <th class="text-center">Last Name</th>

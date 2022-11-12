@@ -54,4 +54,11 @@ class User extends Authenticatable
     public function role() {
         return $this->belongsTo(Role::class,'role_id');
     }
+
+    //Scope
+
+    public function scopeHandleUser($query)
+    {
+        return $query->where('id', '>', 0);
+    }
 }
