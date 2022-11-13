@@ -94,7 +94,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-dark" wire:click="handleAction(1)" data-dismiss="modal">Exit</button>
-          <button type="button" class="btn btn-primary" wire:click="" >Save</button>
+          <button type="button" class="btn btn-primary" wire:click="handlePassword({{$selected_id}},1)" >Save</button>
         </div>
       </div>
     </div>

@@ -18,8 +18,9 @@ class UserController extends Component
 
 
     public $pagination;
-    public $roles, $url,$action = 1, $edit;
+    public $roles, $url,$action = 1, $edit, $dateFromFilterUser, $dateToFilterUser;
     public $name,$user_name,$password,$role = 'Choose',$status = 'Choose', $selected_id, $email;
+    public $newPassword, $repeatNewPassword;
 
 
     public function mount(){
@@ -87,15 +88,27 @@ class UserController extends Component
         $this->handleReset($action);
     }
 
+    protected $listeners = ['deleteUser'];
+
+
+    public function deleteUser(User $user, $action ){
+        $user->delete();
+        $this->handleReset($action);
+    }
+
     public function handleReset($action)
     {
-        $this->name        = '';
-        $this->user_name   = '';
-        $this->password    = '';
-        $this->status      = 'Choose';
-        $this->role        = 'Choose';
-        $this->email        = '';
-        $this->action        = $action;
+        $this->name               = '';
+        $this->user_name          = '';
+        $this->password           = '';
+        $this->status             = 'Choose';
+        $this->role               = 'Choose';
+        $this->email              = '';
+        $this->newPassword        = '';
+        $this->repeatNewPassword  = '';
+        $this->action             = $action;
+        $this->edit               = 1;
+
       
     }
 
@@ -110,7 +123,29 @@ class UserController extends Component
     	$this->email           = $user->email ;
     	$this->selected_id     = $user->id;
     	$this->action          = $action;
-    	$this->edit            = 2;
-        
+    	$this->edit            = 2;  
     }
+
+    public function handlePassword(User $user, $action){
+        if ($this->newPassword) {
+            if ($this->newPassword == $this->repeatNewPassword) {
+                $user->update([
+                    'password' => $this->newPassword
+                ]);
+                $this->emit('modalsClosed');
+                $this->emit('msgok','User '.$user->name.', changed password');
+                $this->handleReset($action);
+            }else{
+                $this->emit('msg-error','Passwords do not match');
+            }
+        }else{
+            $this->emit('msg-error','Incorrect value, please enter a password');
+        }
+    }
+
+    public function clearPasswords(){
+        $this->newPassword          = null;
+        $this->repeatNewPassword    = null;
+    }
+
 }

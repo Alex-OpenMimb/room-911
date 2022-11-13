@@ -1,4 +1,4 @@
-const deleteEmployee = (id, action) => {
+const deleteUser = (id, action) => {
 
     Swal.fire({
         title: '¿Delete user?',

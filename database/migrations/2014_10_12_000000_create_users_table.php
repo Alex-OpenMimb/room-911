@@ -30,7 +30,6 @@ class CreateUsersTable extends Migration
             $table->foreign('role_id')->references('id')->on('roles');
 
             $table->enum('status',['Active','Inactive']);
-            $table->string('last_access')->nullable();
             $table->string('password');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

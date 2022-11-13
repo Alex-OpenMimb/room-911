@@ -89,20 +89,13 @@ class EmployeController extends Component
     }
 
  
-    protected $listeners = ['handleState','deleteEmployee'];
+    protected $listeners = ['deleteEmployee'];
 
-    public function handleState(Employee $employe, $status, $action ){
-        $employe->status = $status;
-        $employe->save();
-        $this->handleReset($action);
-    }
 
     public function deleteEmployee(Employee $employe, $action ){
         $employe->delete();
         $this->handleReset($action);
     }
-
-
 
     public function accessEmployee($action){
         if ($this->employee_document) {

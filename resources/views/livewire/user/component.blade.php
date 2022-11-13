@@ -1,6 +1,6 @@
 <div class="row layout-top-spacing">
     <div class="col-xl-12 col-lg-12 col-md-12 col-12 layout-spacing">
-       
+        @if($action == 1)
             <div class="widget-content-area br-4">
 
     
@@ -46,21 +46,25 @@
                                         <td class="text-center" style="width: 30%">
                                             <ul class="table-controls ">
                                                 <li>
-                                                    <button type="button" title="update" class="btn btn-dark"  wire:click="edit({{$user->id}}, 2)" data-toggle="modal" data-target="#createUserModal">
+                                                    <button type="button" title="update" class="btn btn-dark"  wire:click="edit({{$user->id}}, 1)" data-toggle="modal" data-target="#createUserModal">
                                                         <i class="la la-edit la-lg"></i>
                                                     </button>
                                                 </li>
                             
-
                                                     <li>
-                                                        <button type="button" title="delete" class="btn btn-dark" onclick="">
+                                                        <button type="button" title="delete" class="btn btn-dark" onclick="deleteUser({{$user->id}}, 1)">
                                                             <i class="la la-trash la-lg"></i>
                                                         </button>
                                                     </li>
                                             
                                               
                                                     <li>
-                                                        <button type="button" title="changed passwor" class="btn btn-dark" wire:click="" data-toggle="modal" data-target="#modalChangedPassword">
+                                                        <button type="button" title="changed passwor" class="btn btn-dark" wire:click="edit({{$user->id}}, 2)" data-toggle="modal" data-target="">
+                                                            <i class="la la-history la-lg"></i>
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <button type="button" title="changed passwor" class="btn btn-dark" wire:click="edit({{$user->id}}, 1)" data-toggle="modal" data-target="#modalChangedPassword">
                                                             <i class="la la-history la-lg"></i>
                                                         </button>
                                                     </li>
@@ -78,7 +82,11 @@
                 @endif
 
             </div>
-       
+
+            @elseif($action == 2)
+
+            @include('livewire.user.show')
+        @endif
     </div>
 
     
