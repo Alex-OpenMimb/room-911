@@ -2,7 +2,7 @@
     <div class="widget-header">
         <div class="row">
             <div class="col-xl-12 text-center">
-                <h5><b>Employee Information</b></h5>
+                <h5 class="color-text-primary"><b>Employee Information</b></h5>
             </div>
         </div>
     </div>

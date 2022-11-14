@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{$edit == 1 ? 'Register User' : 'Update User'}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -18,7 +18,7 @@
                             <input wire:model.lazy="name" type="text" class="form-control" >
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12">
-                            <label >Email</label>
+                            <label >Email *</label>
                             <input wire:model.lazy="email" type="text" class="form-control" >
                         </div>
                         <div class="form-group col-lg-4 col-md-4 col-sm-12">
