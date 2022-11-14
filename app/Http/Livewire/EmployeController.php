@@ -84,7 +84,7 @@ class EmployeController extends Component
     
     $this->handleReset($action);
     $this->emit('modalsClosed');
-    $this->emit('msgok','Employee '.$employee->first_name.', to '.$message);
+    $this->emit('msgok','Employee '.$employee->first_name.', was '.$message);
 
     }
 
@@ -172,7 +172,7 @@ class EmployeController extends Component
     {
         $access = AccessRecord::all();
         $date   = Carbon::now()->format('y-m-d - h:i:s');
-        $pdf    = PDF::loadView('historyPDF',compact('access', 'date'));
+        $pdf    = PDF::loadView('exportPDF',compact('access', 'date'));
         return $pdf->stream("access-history-{$date}.pdf");
     }
 

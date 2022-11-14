@@ -79,7 +79,7 @@ class UserController extends Component
     
     $this->handleReset($action);
     $this->emit('modalsClosed');
-    $this->emit('msgok','User '.$user->name.', to '.$message);
+    $this->emit('msgok','User '.$user->name.', was '.$message);
 
     }
 
