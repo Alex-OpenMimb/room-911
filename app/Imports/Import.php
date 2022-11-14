@@ -14,7 +14,7 @@ use Maatwebsite\Excel\Concerns\SkipsOnError;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 
-class Import implements ToModel, WithHeadingRow
+class Import implements ToModel, WithHeadingRow,WithValidation
 {
     use Importable;
     /** 
@@ -42,15 +42,14 @@ class Import implements ToModel, WithHeadingRow
 
    
 
-    public function rules()
+    public function rules():array
     {
         return [
-            'first_name'                => 'bail|required|min:3|max:20|string',
-            'last_name'                 => 'bail|required|string|min:3|max:50',
-            'employee_document'         => 'bail|required|numeric|digits_between:7,12|unique',
-            'department'                => 'bail|required',
+            'first_name'                => 'required|min:3|max:20|string',
+            'last_name'                 => 'required|string|min:3|max:50',
+            'employee_document'         => 'required|numeric|digits_between:7,12|unique:employees,employee_document',
+            'department'                => 'required',
         ];
     }
     
-
 }
