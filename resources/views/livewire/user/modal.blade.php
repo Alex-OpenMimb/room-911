@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"> user</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -11,9 +11,7 @@
         <div class="modal-body">
             <div class="widget-one">
                 <form>
-                    <div class="mb-2">
-                        <span class="text-danger">Fields with * are required</span>
-                    </div>
+                   
                     <div class="row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-12">
                             <label >Name*</label>
@@ -58,6 +56,9 @@
                 <div class="mt-2">
                     @include('common.messages')
                 </div>
+                <div class="mb-2">
+                    <span class="text-danger">* Required</span>
+                </div>
             </form>
             </div>
         </div>
@@ -78,18 +79,21 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Changed password to user</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"  wire:click="handleAction(1)">
+            <span aria-hidden="true" >&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <div class="form-group col-lg-8 col-md-8 col-sm-12">
-                <label>New password*</label>
-                <input wire:model.lazy="newPassword" type="password" class="form-control"  placeholder="contraseña">
-            </div>
-            <div class="form-group col-lg-8 col-md-8 col-sm-12">
-                <label>Repeat password*</label>
-                <input wire:model.lazy="repeatNewPassword" type="password" class="form-control"  placeholder="contraseña">
+            <div class="d-flex flex-column align-items-center justify-content-center">
+
+                <div class="form-group col-lg-8 col-md-8 col-sm-12">
+                    <label>New password*</label>
+                    <input wire:model.lazy="newPassword" type="password" class="form-control"  placeholder="contraseña">
+                </div>
+                <div class="form-group col-lg-8 col-md-8 col-sm-12">
+                    <label>Repeat password*</label>
+                    <input wire:model.lazy="repeatNewPassword" type="password" class="form-control"  placeholder="contraseña">
+                </div>
             </div>
         </div>
         <div class="modal-footer">

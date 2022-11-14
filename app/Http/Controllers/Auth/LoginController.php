@@ -49,6 +49,7 @@ class LoginController extends Controller
             }
             else{
                 $user               = User::find(Auth::user()->id);
+                $user->last_access  = Carbon::now()->format('d/m/y h:i:s A');
                 $user->save();
                 return redirect()->route('accessroom');
             }

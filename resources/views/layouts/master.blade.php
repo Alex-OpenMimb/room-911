@@ -38,6 +38,7 @@
         <link href="{{ asset('plugins/flatpickr/material_red.css') }}" rel="stylesheet" type="text/css">
         <link href="{{ asset('assets/css/elements/color_library.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('assets/utility.css') }}" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{{ asset('assets/fontello.css') }}">
 
 
 
@@ -53,7 +54,7 @@
 
     </head>
 
-    <body class="alt-menu sidebar-noneoverflow">
+    <body class="alt-menu sidebar-noneoverflow  bg-light">
         <!-- BEGIN LOADER -->
         <div id="load_screen">
             <div class="loader">
@@ -71,7 +72,8 @@
 
                 <div class="nav-logo align-self-center d-flex mt-3">
                     <a class="navbar-brand" href="">
-                        <span class="navbar-brand-name color-text-primary">ACCESS CONTROL </span>
+                        <span class="navbar-brand-name color-text-primary">ROOM 911 </span>
+                        <h6> <b>Last access</b>  {{ Auth::user()->last_access }}</h6>
                     </a>
 
                     <nav class="d-flex mt-2">
@@ -149,12 +151,12 @@
         <!-- END NAVBAR -->
 
         <!-- BEGIN MAIN CONTAINER -->
-        <div class="main-container" id="container">
+        <div class="main-container  bg-light" id="container">
             <div class="overlay"></div>
             <div class="search-overlay"></div>
 
             <!-- BEGIN CONTENT PART -->
-            <div id="content" class="main-content">
+            <div id="content  bg-light" class="main-content">
                 <div class="layout-px-spacing">
                     @yield('content')
                 </div>

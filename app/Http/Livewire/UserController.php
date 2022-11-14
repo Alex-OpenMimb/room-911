@@ -129,9 +129,12 @@ class UserController extends Component
     public function handlePassword(User $user, $action){
         if ($this->newPassword) {
             if ($this->newPassword == $this->repeatNewPassword) {
+
                 $user->update([
-                    'password' => $this->newPassword
+                    'password' => Hash::make($this->newPassword)
                 ]);
+
+
                 $this->emit('modalsClosed');
                 $this->emit('msgok','User '.$user->name.', changed password');
                 $this->handleReset($action);

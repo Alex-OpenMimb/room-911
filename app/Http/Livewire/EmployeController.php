@@ -57,7 +57,7 @@ class EmployeController extends Component
     public function StoreOrUpdate($action)
     {
         $this->validate([
-            'first_name'                => 'bail|required|min:3|max:10|string',
+            'first_name'                => 'bail|required|min:3|max:20|string',
             'last_name'                 => 'bail|required|string|min:3|max:20',
             'employee_document'         => 'bail|required|numeric|digits_between:7,12|unique:employees,employee_document,'.$this->selected_id,
             'department'                => 'bail|required|not_in:Choose',

@@ -11,9 +11,7 @@
         <div class="modal-body">
             <div class="widget-one">
                 <form>
-                    <div class="mb-2">
-                        <span class="text-danger">Fields with * are required</span>
-                    </div>
+                   
                     <div class="row">
                         <div class="form-group col-lg-4 col-md-4 col-sm-12">
                             <label >First Name*</label>
@@ -52,6 +50,9 @@
                       @include('common.messages')
                   </div>
             </form>
+            <div class="mb-2">
+              <span class="text-danger"> * Required</span>
+          </div>
             </div>
         </div>
         <div class="modal-footer">
@@ -61,6 +62,10 @@
       </div>
     </div>
 </div>
+
+
+
+
 
 
 {{-- access employees --}}
@@ -78,15 +83,16 @@
         <div class="modal-body">
             <div class="widget-one">
                 <form >
-                    <div class="mb-2">
-                        <span class="text-danger">Fields with * are required</span>
-                    </div>
+                
                     <div class="row">
                         <div class="form-group col-lg-10 col-md-10 col-sm-12">
-                            <label >Document Number*</label>
+                            <label >Document Number</label>
                             <input wire:model.lazy="employee_document" type="number" class="form-control" >
                         </div>
                     </div>
+                    <div class="mb-2">
+                      <span class="text-danger"> * Required</span>
+                  </div>
                 <div class="mt-2">
                     @include('common.messages')
                 </div>
@@ -116,18 +122,19 @@
         <div class="modal-body">
             <div class="widget-one">
                 <form >
-                    <div class="mb-2">
-                        <span class="text-danger">Fields with * are required</span>
-                    </div>
+                  
                     <div class="row">
                         <div class="form-group col-lg-10 col-md-10 col-sm-12">
-                            <label >Attach csv file*</label>
+                            <label >Excel or CVS file*</label>
                             <input wire:model.lazy="importFile" type="file" class="form-control" >
                         </div>
                     </div>
                 <div class="mt-2">
                     @include('common.messages')
                 </div>
+                <div class="mb-2">
+                  <span class="text-danger"> * Required</span>
+              </div>
             </form>
             </div>
         </div>

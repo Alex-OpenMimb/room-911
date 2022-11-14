@@ -11,11 +11,10 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
 use Maatwebsite\Excel\Concerns\SkipsOnError;
-use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
 
-class Import implements ToModel, WithHeadingRow, WithValidation
+class Import implements ToModel, WithHeadingRow
 {
     use Importable;
     /** 
@@ -43,7 +42,7 @@ class Import implements ToModel, WithHeadingRow, WithValidation
 
    
 
-    public function rules():Array
+    public function rules()
     {
         return [
             'first_name'                => 'bail|required|min:3|max:20|string',
@@ -54,16 +53,4 @@ class Import implements ToModel, WithHeadingRow, WithValidation
     }
     
 
-    // public function rules():array
-    // {
-    //     return [
-    //         'first_name'                 =>  Rule::in(['required','string']),
-    //         'last_name'                  =>  Rule::in(['required','string']),
-    //         'employee_document'          =>  Rule::in(['required','numeric', 'unique']),
-    //         'department'                 =>  Rule::in(['required','numeric']),
-    
-    //     ];
-    // }
-
-    
 }

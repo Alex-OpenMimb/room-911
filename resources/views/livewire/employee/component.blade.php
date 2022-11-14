@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="col-xl-12 text-center">
 
-                            <h5><b>ROOM 911</b></h5>
+                            <h5><b>ACCESS CONTROL</b></h5>
 
                         </div>
                     </div>
@@ -16,52 +16,52 @@
                 @include('common.alerts')
                 @if ($employees->count() > 0)
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-striped table-checkable table-highlight-head mb-4">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Id</th>
-                                    <th class="text-center">Document Number</th>
-                                    <th class="text-center">Firts Name</th>
-                                    <th class="text-center">Last Name</th>
-                                    <th class="text-center">Department</th>
-                                    <th class="text-center">Status</th>
-                                    <th class="text-center">Last Access</th>
-                                    <th class="text-center">Total Access</th>
-                                    <th class="text-center">Actions</th>
+                        <table class="table table-striped mb-4">
+                            <thead >
+                                <tr >
+                                    <th class="text-center color-text-primary border">Id</th>
+                                    <th class="text-center border">Document Number</th>
+                                    <th class="text-center border">Firts Name</th>
+                                    <th class="text-center border">Last Name</th>
+                                    <th class="text-center border">Department</th>
+                                    <th class="text-center border">Status</th>
+                                    <th class="text-center border">Last Access</th>
+                                    <th class="text-center border">Total Access</th>
+                                    <th class="text-center border">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($employees as $employee)
                                     <tr>
-                                        <td class="text-center">{{$employee->id}}</td>
-                                        <td class="text-center">{{$employee->employee_document}}</td>
-                                        <td class="text-center">{{$employee->first_name}}</td>
-                                        <td class="text-center">{{$employee->last_name}}</td>
-                                        <td class="text-center">{{$employee->department->name}}</td>
-                                        <td class="text-center">{{$employee->status}}</td>
-                                        <td class="text-center">{{$employee->Last_access}}</td>
-                                        <td class="text-center">{{$employee->Last_access_total}}</td>
+                                        <td class="text-center border">{{$employee->id}}</td>
+                                        <td class="text-center border">{{$employee->employee_document}}</td>
+                                        <td class="text-center border">{{$employee->first_name}}</td>
+                                        <td class="text-center border">{{$employee->last_name}}</td>
+                                        <td class="text-center border">{{$employee->department->name}}</td>
+                                        <td class="text-center border">{{$employee->status}}</td>
+                                        <td class="text-center border">{{$employee->Last_access}}</td>
+                                        <td class="text-center border">{{$employee->Last_access_total}}</td>
                                                                  
-                                       <td class="text-center" style="width: 30%">
+                                       <td class="text-center border" style="width: 30%">
 
                                         <ul class="table-controls ">
                                             <li>
-                                                <button type="button" title="update" class="btn btn-dark"  wire:click="edit({{$employee->id}}, 1)" data-toggle="modal" data-target="#createEmployeeModal">
+                                                <button type="button" title="update" class="btn btn-primary"  wire:click="edit({{$employee->id}}, 1)" data-toggle="modal" data-target="#createEmployeeModal">
                                                     <i class="la la-edit la-lg"></i>
                                                 </button>
                                             </li>
                                         
                                                
                                                 <li>
-                                                    <button type="button" title="delete" class="btn btn-dark" onclick="deleteEmployee({{$employee->id}}, 1)">
+                                                    <button type="button" title="delete" class="btn btn-danger" onclick="deleteEmployee({{$employee->id}}, 1)">
                                                         <i class="la la-trash la-lg"></i>
                                                     </button>
                                                 </li>
                                          
                                           
                                                 <li>
-                                                    <button type="button" title="history" class="btn btn-dark" wire:click="edit({{$employee->id}}, 2)">
-                                                        <i class="la la-history la-lg"></i>
+                                                    <button type="button" title="history" class="btn btn-info" wire:click="edit({{$employee->id}}, 2)">
+                                                        <i class="la la-file la-lg"></i>
                                                     </button>
                                                 </li>
                                          

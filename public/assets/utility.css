@@ -18,6 +18,13 @@
     columns: #3F4968;
 }
 
+.btn-blue{
+    background-color: rgb(207, 215, 251) 
+}
+.btn-silver{
+    background-color: rgb(255, 202, 44) 
+}
+
 .btn-menu:hover{
     background-color: rgb(58, 207, 162); 
 }

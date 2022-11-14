@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="d-flexjustify-content-between">
-        <h3>ACCESS HISTORY ROOM_911</h3>
+        <h3>ACCESS HISTORY ROOM 911</h3>
         <span class="my-0">{{$date}}</span>
     </div>
     <h4>Access History</h4>
@@ -21,7 +21,7 @@
                 <th>EMPLOYEE</th>
                 <th>DEPARTMENT</th>
                 <th>DOCUMENT NUMBER</th>
-                <th>SUCCESS</th>
+                <th>ACCESS</th>
                 <th>DATE</th>
             </tr>
         </thead>
@@ -45,7 +45,7 @@
                         @endif
                     </th>
                     <th>{{$access->employee_document? $access->employee_document:$access->employee->employee_document}}</th>
-                    <th>{{$access->success}}</th>
+                    <th>{{$access->access}}</th>
                     <th>{{$access->full_created_at}}</th>
                 </tr>
                 @php($j++)

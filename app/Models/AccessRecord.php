@@ -47,7 +47,10 @@ class AccessRecord extends Model
 
    public function getAccessAttemptAttribute() {
     return Carbon::parse($this->created_at)->toFormattedDateString().' - '.Carbon::parse($this->created_at)->format('h:i:s A');
-}
+    }
 
+    public function getFullCreatedAtAttribute() {
+    return Carbon::parse($this->created_at)->toFormattedDateString().' - '.Carbon::parse($this->created_at)->format('h:i:s A');
+    }
 
 }

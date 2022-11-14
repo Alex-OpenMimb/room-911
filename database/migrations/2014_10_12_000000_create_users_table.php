@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
 
             $table->unsignedBigInteger('role_id');
             $table->foreign('role_id')->references('id')->on('roles');
+            $table->string('last_access')->nullable();
 
             $table->enum('status',['Active','Inactive']);
             $table->string('password');

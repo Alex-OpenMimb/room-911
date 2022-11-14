@@ -31,7 +31,7 @@
     
     <div class="row ">
         <div class="col-lg-5 mt-2  text-left">
-            <button type="button" wire:click="handleAction(1)" class="btn btn-dark mr-1">
+            <button type="button" wire:click="handleAction(1)" class="btn btn-blue mr-1">
                 <i class="mbri-left"></i> Back
             </button>
         </div>

@@ -14,7 +14,7 @@
                         </div>
                     </div>
 
-                    <button type="button" title="created employee"  wire:click="handleAction(1)" class="btn btn-dark" data-toggle="modal" data-target="#createUserModal">
+                    <button type="button" title="created employee"  wire:click="handleAction(1)" class="btn btn-menu" data-toggle="modal" data-target="#createUserModal">
                         Insert User
                     </button>
                 </div>            
@@ -25,47 +25,47 @@
                         <table class="table table-bordered table-hover table-striped table-checkable table-highlight-head mb-4">
                             <thead>
                                 <tr>
-                                    <th class="text-center">ID</th>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-center">Email</th>
-                                    <th class="text-center">User Name</th>
-                                    <th class="text-center">Role</th>
-                                    <th class="text-center">Status</th>
-                                    <th class="text-center">Actions</th>
+                                    <th class="text-center border">ID</th>
+                                    <th class="text-center border">Name</th>
+                                    <th class="text-center border">Email</th>
+                                    <th class="text-center border">User Name</th>
+                                    <th class="text-center border">Role</th>
+                                    <th class="text-center border">Status</th>
+                                    <th class="text-center border">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($users as $user)
                                     <tr>
-                                        <td class="text-center">{{$user->id}}</td>
-                                        <td class="text-center">{{$user->name}}</td>
-                                        <td class="text-center">{{$user->email}}</td>
-                                        <td class="text-center">{{$user->user_name}}</td>
-                                        <td class="text-center">{{$user->role->name}}</td>
-                                        <td class="text-center">{{$user->status}}</td>
-                                        <td class="text-center" style="width: 30%">
+                                        <td class="text-center border">{{$user->id}}</td>
+                                        <td class="text-center border">{{$user->name}}</td>
+                                        <td class="text-center border">{{$user->email}}</td>
+                                        <td class="text-center border">{{$user->user_name}}</td>
+                                        <td class="text-center border">{{$user->role->name}}</td>
+                                        <td class="text-center border">{{$user->status}}</td>
+                                        <td class="text-center border" style="width: 30%">
                                             <ul class="table-controls ">
                                                 <li>
-                                                    <button type="button" title="update" class="btn btn-dark"  wire:click="edit({{$user->id}}, 1)" data-toggle="modal" data-target="#createUserModal">
+                                                    <button type="button" title="update" class="btn btn-primary"  wire:click="edit({{$user->id}}, 1)" data-toggle="modal" data-target="#createUserModal">
                                                         <i class="la la-edit la-lg"></i>
                                                     </button>
                                                 </li>
                             
                                                     <li>
-                                                        <button type="button" title="delete" class="btn btn-dark" onclick="deleteUser({{$user->id}}, 1)">
+                                                        <button type="button" title="delete" class="btn btn-danger" onclick="deleteUser({{$user->id}}, 1)">
                                                             <i class="la la-trash la-lg"></i>
                                                         </button>
                                                     </li>
                                             
                                               
                                                     <li>
-                                                        <button type="button" title="changed passwor" class="btn btn-dark" wire:click="edit({{$user->id}}, 2)" data-toggle="modal" data-target="">
-                                                            <i class="la la-history la-lg"></i>
+                                                        <button type="button" title="changed passwor" class="btn btn-info" wire:click="edit({{$user->id}}, 2)" data-toggle="modal" data-target="">
+                                                            <i class="la la-file la-lg"></i>
                                                         </button>
                                                     </li>
                                                     <li>
-                                                        <button type="button" title="changed passwor" class="btn btn-dark" wire:click="edit({{$user->id}}, 1)" data-toggle="modal" data-target="#modalChangedPassword">
-                                                            <i class="la la-history la-lg"></i>
+                                                        <button type="button" title="changed passwor" class="btn btn-primary" wire:click="edit({{$user->id}}, 1)" data-toggle="modal" data-target="#modalChangedPassword">
+                                                            <i class="la icon-key la-lg text-with"></i>
                                                         </button>
                                                     </li>
                                              
