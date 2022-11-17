@@ -48,7 +48,7 @@ class Import implements ToModel, WithHeadingRow,WithValidation
             'first_name'                => 'required|min:3|max:20|string',
             'last_name'                 => 'required|string|min:3|max:50',
             'employee_document'         => 'required|numeric|digits_between:7,12|unique:employees,employee_document',
-            'department'                => 'required',
+            'department'                => 'required|exists:departments,name',
         ];
     }
     

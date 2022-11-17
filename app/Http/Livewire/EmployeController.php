@@ -36,11 +36,10 @@ class EmployeController extends Component
     public function render()
     {
         $employees = Employee::HandleEmployee();
-        // $b = $this->handleFilter($employees)->orderBy('id','asc')->paginate($this->pagination);
-        // dd($b);
+  
         return view('livewire.employee.component',[
 
-            'employees' =>   $this->handleFilter($employees)->orderBy('id','asc')->paginate($this->pagination),
+            'employees' =>   $this->handleFilter($employees)->orderBy('id','desc')->paginate($this->pagination),
         ]);
     }
 
@@ -83,7 +82,7 @@ class EmployeController extends Component
     $this->selected_id ? $message = 'update' : $message = 'created';
     
     $this->handleReset($action);
-    $this->emit('modalsClosed');
+    $this->emit('modalsClosed',);
     $this->emit('msgok','Employee '.$employee->first_name.', was '.$message);
 
     }
@@ -171,7 +170,7 @@ class EmployeController extends Component
     public function exportPDF()
     {
         $access = AccessRecord::all();
-        $date   = Carbon::now()->format('y-m-d - h:i:s');
+        $date   = Carbon::now()->format('d/m/y - h:i:s');
         $pdf    = PDF::loadView('exportPDF',compact('access', 'date'));
         return $pdf->stream("access-history-{$date}.pdf");
     }

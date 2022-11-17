@@ -3,6 +3,11 @@
     background-color: rgb(207, 215, 251);
 }
 
+.border{
+    border: solid 1px black;
+    font-size: 1rem;
+}
+
 .color-text-primary{
     color: #3F4968;
 }

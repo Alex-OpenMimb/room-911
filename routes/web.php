@@ -27,6 +27,6 @@ Route::middleware(['auth'])->group( function() {
     Route::view('access-room',        'accessroom')->name('accessroom');
     Route::view('users',            'users')->name('users');
 
-    Route::get('handle/pdf',        [EmployeController::class, 'exportPDF'])->name('exportpdf');
+    Route::get('export/pdf',        [EmployeController::class, 'exportPDF'])->name('exportpdf');
 
 });
