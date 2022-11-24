@@ -12,6 +12,7 @@ use Livewire\WithPagination;
 use Illuminate\Support\Facades\Route;
 use PDF ;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
 class EmployeController extends Component
@@ -20,7 +21,7 @@ class EmployeController extends Component
 
     protected $paginationTheme = 'bootstrap';
 
-    public $departments, $selected_id, $first_name, $last_name, $employee_document,  $employee, $accessEmployee;
+    public $departments, $selected_id, $first_name, $last_name, $employee_document,  $employee, $accessEmployee,$dateFrom;
     public $action = 1, $pagination = 5, $url, $edit = 1;
     public $dateFromFilter, $dateToFilter, $dateFromFilterEmployee, $dateToFilterEmployee, $importFile, $count, $search;  
     public $idFilter = 'Choose',$department = 'Choose', $departmentFilter = 'Choose', $status;    
@@ -100,9 +101,11 @@ class EmployeController extends Component
         if ($this->employee_document) {
             $employee = Employee::employeeDocument($this->employee_document)->first();
             if ($employee) {
+                
                 if ($employee->status == 'Active') {
+
                     $data = [
-                        'employee_id'   => $employee->id,
+                        'employee_id'  => $employee->id,
                         'access'       => 'YES',
                     ];
                     $this->emit('msgok','Access Successful');
@@ -119,6 +122,7 @@ class EmployeController extends Component
                 ];
                 $this->emit('msg-error','Employee does not exist');
             }
+
             AccessRecord::create($data);
             $this->emit('modalsClosed');
             $this->handleReset($action);
@@ -165,14 +169,35 @@ class EmployeController extends Component
     	$this->action               = $action;
     	$this->edit                 = 2;
     }
+   
 
-
-    public function exportPDF()
+    public function exportPDF( Request $request)
     {
-        $access = AccessRecord::all();
+        $dateFrom = $request->input('dateFromFilter');
+        $dateTo   = $request->input('dateToFilter');
+
+        if($dateFrom && $dateTo){
+
+            $access = AccessRecord::DateAccess($dateFrom,$dateTo)->get();
+        
+        }
+        if($dateFrom && !$dateTo){
+            
+            $access = AccessRecord::uniqueDateAccess($dateFrom)->get();
+        }
+        if(!$dateFrom && $dateTo){
+            
+            $access = AccessRecord::uniqueDateAccess($dateTo)->get();
+        }
+        if(!$dateFrom && !$dateTo){
+            
+            $access = AccessRecord::all();
+        }
+     
         $date   = Carbon::now()->format('d/m/y - h:i:s');
         $pdf    = PDF::loadView('exportPDF',compact('access', 'date'));
-        return $pdf->stream("access-history-{$date}.pdf");
+        return   $pdf->download("access-history-{$date}.pdf");
+    
     }
 
 
@@ -194,6 +219,7 @@ class EmployeController extends Component
 
 
     public function handleFilter($employee){
+
         if ($this->search) {
             $employee->search($this->search);
         }

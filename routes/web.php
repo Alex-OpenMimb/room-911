@@ -1,7 +1,8 @@
-<?php
+  b<?php
 
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\EmployeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () {    
     return view('welcome');
 });
 
@@ -27,6 +28,6 @@ Route::middleware(['auth'])->group( function() {
     Route::view('access-room',        'accessroom')->name('accessroom');
     Route::view('users',            'users')->name('users');
 
-    Route::get('export/pdf',        [EmployeController::class, 'exportPDF'])->name('exportpdf');
+    Route::get('export/pdf',   [EmployeController::class, 'exportPDF'])->name('exportpdf');
 
 });

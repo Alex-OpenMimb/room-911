@@ -21,13 +21,17 @@
             @endforeach
         </select>
     </div>
+    <form class="d-flex flex-row justify-content-around" action="{{route('exportpdf')}}">
+    
+            <div class="">
+                <label >Initial access date</label>
+                <input wire:model.lazy="dateFromFilter" name="dateFromFilter" type="date" class="form-control">
+            </div>
+            <div class="mx-3">
+                <label >Final access date</label>
+                <input wire:model.lazy="dateToFilter" name="dateToFilter" type="date" class="form-control">
+            </div>
 
-    <div class="col-lg-3 col-md-2 col-sm-8">
-        <label >Initial access date</label>
-        <input wire:model.lazy="dateFromFilter" type="date" class="form-control">
-    </div>
-    <div class="col-lg-3 col-md-2 col-sm-8">
-        <label >Final access date</label>
-        <input wire:model.lazy="dateToFilter" type="date" class="form-control">
-    </div>
+        <button type="submit" title="created CSV"  class="btn-menu h-2 margin-t-2">History PDF</button>
+    </form>
 </div>
